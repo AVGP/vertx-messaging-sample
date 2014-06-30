@@ -7,7 +7,7 @@
     <h1>Hello there!</h1>
     <script>
 
-    var eb = new vertx.EventBus('http://localhost:8080/eventbus');
+    var eb = new vertx.EventBus('http://192.168.50.2:8000/eventbus');
     eb.onopen = function() {
       console.log("Eventbus ready");
       document.body.innerHTML += "<h2 id=\"job\">Your job has been started...</h2>";
