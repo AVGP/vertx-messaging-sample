@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="http://cdn.sockjs.org/sockjs-0.3.4.min.js"></script>
+    <script src='vertxbus-2.1.js'></script>
+  </head>
+  <body>
+    <h1>Hello there!</h1>
+    <script>
+
+    var eb = new vertx.EventBus('http://localhost:8080/eventbus');
+    eb.onopen = function() {
+      console.log("Eventbus ready");
+      document.body.innerHTML += "<h2 id=\"job\">Your job has been started...</h2>";
+      eb.send("test.jobs", "Work to do :)", function(response) {
+        console.log("Response received:", response);
+        document.getElementById("job").textContent += response;
+      })
+    };
+
+    </script>
+  </body>
+</html>
