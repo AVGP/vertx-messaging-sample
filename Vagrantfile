@@ -9,6 +9,7 @@ Vagrant.configure("2") do |config|
     web1.vm.hostname = "web1"
     web1.vm.network "private_network", ip: "192.168.50.2"
     web1.vm.network :forwarded_port, guest: 8000, host: 8080
+    web1.vm.synced_folder ".", "/vagrant", type: "nfs", mount_options: ["noatime"]
   end
 
   config.vm.define "worker1" do |db|
